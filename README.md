@@ -1,4 +1,4 @@
-# 🎒 BolsosApp - Tienda de Bolsos
+#  BolsosApp - Tienda de Bolsos
 
 **Alumna:** Yasbel Olivares Soto  
 **Curso:** 2DAW
