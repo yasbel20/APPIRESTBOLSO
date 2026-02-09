@@ -5,26 +5,26 @@
 
 ---
 
-## 📝 Descripción
+##  Descripción
 
 API REST desarrollada con FastAPI para la gestión de una tienda de bolsos. Permite realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) sobre un catálogo simplificado de productos.
 
-## 🚀 Características
+##  Características
 
-- ✅ CRUD completo de bolsos
-- 📊 Solo 3 tipos de bolsos: bandolera, mochila y tote
-- 🔄 Validación de datos con Pydantic
-- 📝 Documentación automática con Swagger/OpenAPI
-- 🗄️ Conexión a MySQL
-- ✔️ Tests unitarios completos
+-  CRUD completo de bolsos
+-  Solo 3 tipos de bolsos: bandolera, mochila y tote
+-  Validación de datos con Pydantic
+-  Documentación automática con Swagger/OpenAPI
+-  Conexión a MySQL
+-  Tests unitarios completos
 
-## 📋 Requisitos Previos
+##  Requisitos Previos
 
 - Python 3.8 o superior
 - MySQL Server (XAMPP recomendado)
 - pip (gestor de paquetes de Python)
 
-## 🛠️ Instalación
+##  Instalación
 
 ### 1. Clonar o descargar el proyecto
 
@@ -81,7 +81,7 @@ DB_NAME=yasbel
 DB_PORT=3306
 ```
 
-## 🏃 Ejecución de la Aplicación
+##  Ejecución de la Aplicación
 
 ### Iniciar el servidor
 
@@ -91,7 +91,7 @@ py -m uvicorn app.main:app --reload
 
 La aplicación estará disponible en: `http://127.0.0.1:8000`
 
-### 📚 Documentación Interactiva
+###  Documentación Interactiva
 
 Una vez iniciado el servidor:
 
@@ -170,14 +170,14 @@ Elimina un bolso por su ID.
 }
 ```
 
-## 🎯 Tipos de Bolso Válidos
+##  Tipos de Bolso Válidos
 
 Solo se aceptan estos 3 tipos:
 - `bandolera`
 - `mochila`
 - `tote`
 
-## 🧪 Tests
+## Tests
 
 ### Ejecutar todos los tests
 
@@ -205,48 +205,10 @@ py -m pytest tests/test_delete_bolso.py -v
 - `test_update_bolso.py` - Prueba actualizar bolso
 - `test_delete_bolso.py` - Prueba eliminar bolso
 
-## 📂 Estructura del Proyecto
+##  Modelo de Base de Datos
 
-```
-BolsosApp/
-├── app/
-│   ├── __init__.py
-│   ├── main.py          # Endpoints de la API
-│   └── database.py      # Funciones de base de datos
-├── tests/
-│   ├── __init__.py
-│   ├── conftest.py      # Configuración de pytest
-│   ├── test_get_connection.py
-│   ├── test_fetch_all_bolsos.py
-│   ├── test_fetch_bolso_by_id.py
-│   ├── test_insert_bolso.py
-│   ├── test_update_bolso.py
-│   └── test_delete_bolso.py
-├── docs/
-│   └── init_db.sql      # Script de inicialización
-├── .env                 # Variables de entorno
-├── .gitignore
-├── requirements.txt
-└── README.md
-```
 
-## 🗄️ Modelo de Base de Datos
-
-### Tabla: bolsos
-
-| Campo | Tipo | Descripción |
-|-------|------|-------------|
-| id | INT | ID único (auto-incremental) |
-| nombre | VARCHAR(100) | Nombre del bolso |
-| marca | VARCHAR(100) | Marca del producto |
-| precio | DECIMAL(10,2) | Precio del producto |
-| color | VARCHAR(50) | Color del bolso |
-| tipo | ENUM | bandolera, mochila, tote |
-| stock | INT | Cantidad disponible |
-| created_at | TIMESTAMP | Fecha de creación |
-| updated_at | TIMESTAMP | Última actualización |
-
-## 🔧 Tecnologías Utilizadas
+##  Tecnologías Utilizadas
 
 - **FastAPI** - Framework web moderno
 - **Pydantic** - Validación de datos
@@ -255,9 +217,9 @@ BolsosApp/
 - **Uvicorn** - Servidor ASGI
 - **Pytest** - Framework de testing
 
-## ⚠️ Troubleshooting
+##   Troubleshooting
 
-### Error: "Unable to create process using..."
+###  Error: "Unable to create process using..."
 
 Usa `py -m` antes del comando:
 ```powershell
@@ -266,7 +228,7 @@ py -m pip install <paquete>
 py -m pytest
 ```
 
-### Error de conexión a MySQL
+###  Error de conexión a MySQL
 
 Verifica:
 1. MySQL está corriendo en XAMPP
@@ -274,7 +236,7 @@ Verifica:
 3. Base de datos `yasbel` existe
 4. Archivo `.env` tiene las credenciales correctas
 
-### Recrear el entorno virtual
+###  Recrear el entorno virtual
 
 Si tienes problemas con el entorno virtual:
 ```powershell
@@ -285,7 +247,7 @@ py -m venv .venv
 py -m pip install -r requirements.txt
 ```
 
-## 📊 Datos de Prueba
+##  Datos de Prueba
 
 La base de datos incluye un bolso de ejemplo:
 
@@ -298,7 +260,7 @@ Tipo: bandolera
 Stock: 3 unidades
 ```
 
-## 🎓 Información del Proyecto
+##    Información del Proyecto
 
 **Proyecto:** BolsosApp - API REST de Tienda de Bolsos  
 **Alumna:** Yasbel Olivares Soto  
