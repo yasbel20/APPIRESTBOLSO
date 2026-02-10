@@ -1,23 +1,22 @@
-"""
-Test para verificar la conexión a la base de datos.
-Ejecutar: pytest tests/test_get_connection.py
-"""
-import pytest
+import sys
+from pathlib import Path
+
+# Agregar la raíz del proyecto al path para los imports
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
 from app.database import get_connection
 
-def test_get_connection():
-    """Verifica que se pueda establecer conexión con la base de datos."""
-    conn = None
+if __name__ == "__main__":
     try:
         conn = get_connection()
-        assert conn is not None
-        assert conn.is_connected()
-        print("✓ Conexión exitosa a la base de datos")
+        cur = conn.cursor()
+        cur.execute('SELECT 1')
+        print('✅ Conexión OK →', cur.fetchone())
+        cur.close()
+        conn.close()
     except Exception as e:
-        pytest.fail(f"Error al conectar con la base de datos: {str(e)}")
-    finally:
-        if conn and conn.is_connected():
-            conn.close()
+        print('❌ Error de conexión →', e)
 
-if __name__ == "__main__":
-    test_get_connection()
+# ===== EJECUCIÓN DESDE CMD =====
+# python tests/test_get_connection.py

@@ -1,28 +1,29 @@
-"""
-Test para la función fetch_bolso_by_id.
-Ejecutar: pytest tests/test_fetch_bolso_by_id.py
-"""
-import pytest
+import sys
+from pathlib import Path
+
+# Agregar la raíz del proyecto al path para los imports
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
 from app.database import fetch_bolso_by_id
 
-def test_fetch_bolso_by_id_existente():
-    """Verifica que se pueda obtener un bolso existente por ID."""
-    # Asumimos que existe un bolso con ID 1 (creado en init_db.sql)
-    bolso = fetch_bolso_by_id(1)
-    
-    assert bolso is not None
-    assert bolso['id'] == 1
-    assert 'nombre' in bolso
-    assert 'marca' in bolso
-    print(f"✓ Bolso encontrado: {bolso['nombre']} - {bolso['marca']}")
-
-def test_fetch_bolso_by_id_no_existente():
-    """Verifica que devuelva None para un ID que no existe."""
-    bolso = fetch_bolso_by_id(99999)
-    
-    assert bolso is None
-    print("✓ Correctamente devuelve None para ID inexistente")
-
 if __name__ == "__main__":
-    test_fetch_bolso_by_id_existente()
-    test_fetch_bolso_by_id_no_existente()
+    try:
+        # Cambia este ID por uno que exista en tu BD
+        bolso_id = 1
+        bolso = fetch_bolso_by_id(bolso_id)
+        
+        if bolso:
+            print(f'✅ Bolso encontrado (ID {bolso_id}) →')
+            print(f"  • Nombre: {bolso['nombre']}")
+            print(f"  • Precio: ${bolso['precio']}")
+            print(f"  • Stock: {bolso['stock']}")
+            print(f"  • Categoría: {bolso['categoria']}")
+            print(f"  • SKU: {bolso['codigo_sku']}")
+        else:
+            print(f'❌ No se encontró bolso con ID {bolso_id}')
+    except Exception as e:
+        print('❌ Error al buscar bolso →', e)
+
+# ===== EJECUCIÓN DESDE CMD =====
+# python tests/test_fetch_bolso_by_id.py

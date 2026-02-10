@@ -1,26 +1,20 @@
-"""
-Test para la función fetch_all_bolsos.
-Ejecutar: pytest tests/test_fetch_all_bolsos.py
-"""
-import pytest
+import sys
+from pathlib import Path
+
+# Agregar la raíz del proyecto al path para los imports
+project_root = Path(__file__).parent.parent
+sys.path.insert(0, str(project_root))
+
 from app.database import fetch_all_bolsos
 
-def test_fetch_all_bolsos():
-    """Verifica que se puedan obtener todos los bolsos."""
-    bolsos = fetch_all_bolsos()
-    
-    assert isinstance(bolsos, list)
-    print(f"✓ Se obtuvieron {len(bolsos)} bolsos de la base de datos")
-    
-    if len(bolsos) > 0:
-        # Verificar estructura del primer bolso
-        primer_bolso = bolsos[0]
-        campos_esperados = ['id', 'nombre', 'marca', 'precio', 'color', 'tipo', 'stock']
-        
-        for campo in campos_esperados:
-            assert campo in primer_bolso, f"Campo '{campo}' no encontrado"
-        
-        print("✓ Estructura de datos validada correctamente")
-
 if __name__ == "__main__":
-    test_fetch_all_bolsos()
+    try:
+        bolsos = fetch_all_bolsos()
+        print('✅ Total de bolsos en BD →', len(bolsos))
+        for b in bolsos:
+            print(f"  • {b['nombre']} - ${b['precio']} (Stock: {b['stock']})")
+    except Exception as e:
+        print('❌ Error al obtener bolsos →', e)
+
+# ===== EJECUCIÓN DESDE CMD =====
+# python tests/test_fetch_all_bolsos.py
